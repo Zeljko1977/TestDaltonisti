@@ -1,0 +1,5 @@
+export const SAVE_FORM_DATA = 'SAVE_FORM_DATA';
+export const RESET_FORM_DATA = 'RESET_FORM_DATA';
+export const SAVE_TEST_DATA = 'SAVE_TEST_DATA';
+export const RESET_TEST_DATA = 'RESET_TEST_DATA';
+
