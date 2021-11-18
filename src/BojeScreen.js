@@ -67,7 +67,7 @@ const BojeScreen = ({history}) => {
         console.log(t)
         console.log(Date.now())
         console.log((Date.now()-t)/1000)
-        if(event.key==='a' || event.key==='d'){
+        if(event.key==='a' || event.key==='l'){
             const color = event.key === 'a'? 1 : 2
             if(color===bojanka[counterColor].meta){
             //   console.log("Bravo majstore, POGODAK")
@@ -131,7 +131,7 @@ const BojeScreen = ({history}) => {
       const interval1 = setTimeout(() =>{
         history.push({pathname: `/bojethree`})
         console.log('idemo na drugi test')
-    } , 2000); 
+    } , 5000); 
         
     }
 
@@ -143,7 +143,22 @@ const BojeScreen = ({history}) => {
         <div>
            {/* <h1>Fragennummer: {fragen.length}</h1>  */}
            {show === 0 && <div className='krug prviKrug' style={{backgroundColor: bojanka[counterColor].meta === 1 ? `rgba(${bojanka[counterColor].boja1.r},${bojanka[counterColor].boja1.g},${bojanka[counterColor].boja1.b})` : `rgba(${bojanka[counterColor].boja2.r},${bojanka[counterColor].boja2.g},${bojanka[counterColor].boja2.b})`}}></div>}
-           {show === 1 && <h1></h1>}
+           {show === 1 && <div>
+            <section></section>
+            <svg>
+                <filter id="noise">
+                    <feTurbulence id="turbulence">
+                    <animate
+                        attributeName="baseFrequency"
+                        dur="50s"
+                        values="0.9 0.9;0.8 0.8; 0.9 0.9"
+                        repeatCount="indefinite"
+                    ></animate>
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" scale="60"></feDisplacementMap>
+                </filter>
+             </svg>
+               </div>}
            {show === 2 && 
            <div>
                <div className='d-flex justify-content-center'>

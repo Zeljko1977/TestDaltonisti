@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form, Row, Col, Nav } from 'react-bootstrap'
+import { Button, Form, Row, Col, Nav, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import {saveFormData} from './actions/testActions'
 import {RESET_TEST_DATA, RESET_FORM_DATA} from './constants/testConstants'
 
 const HomePage = ({history}) => {
     const [jezik, setJezik] = useState(1)
+    const [agree, setAgree] = useState(false)
+    const [start, setStart] = useState(false)
+    const [startQuestionnaire, setStartQuestionnaire] = useState(false)
     const [formData, setFormData] = useState({})
 
     const dispatch = useDispatch()
@@ -31,6 +34,20 @@ const HomePage = ({history}) => {
         console.log(e.target.value)
         setFormData({...formData, [e.target.name] : e.currentTarget.value})
     }
+
+    const startHandler = (e) => {
+        e.preventDefault()
+        setStart(true)
+    }
+
+    const checkHandler = (e) => {
+        console.log(e.target.checked)
+        setAgree(e.target.checked)
+    }
+    const startQuestionnaireHandler = (e) => {
+        e.preventDefault()
+        setStartQuestionnaire(true)
+    }
     return (
         <div>
             <Form>
@@ -53,15 +70,79 @@ const HomePage = ({history}) => {
                     
                 </Col>
             </Row>
+            <br/>
             <Row>
+                
+                <Col xs={9}>
+                    <Card>
+                    <Card.Body>Ovde text za konsent formu bla ns s s dsddsdd csc dc sccscs. sdsd sdsdc</Card.Body>
+                    </Card>
+                </Col>
+                <Col xs={1}>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label={jezik==1 ? 'Slazem se' : "I agree"} onChange={(e)=>checkHandler(e)}/>
+                </Form.Group>
+                </Col>
+                <Col xs={2}>
+                <Button type='submit' variant='primary' onClick={startHandler} disabled={!agree}>
+                    {jezik==1 ? 'ZAPOČNI EKSPERIMENT' : 'START THE EXPERIMENT'}
+                    </Button>
+                </Col>
+            </Row>
+            <br/>
+            {start &&  <div>
+                <Card>
+                    <Card.Body>Ovde text za instrukcije lbd  dwd wd wd d dwddw wdwed. wdd ewd wef wfe</Card.Body>
+                    </Card>
+                <Row>
+                <Col>
+                <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p>
+                <Nav.Link target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>Colour Blind Test</Nav.Link>
+                    
+                </Col>
+            </Row>
+            <br/>
+            <Row>
+            <Form.Label>{jezik==1 ? 'Izaberite kategoriju vaseg poremećaja vida' : 'Choose the category of your vision disorder'}</Form.Label>
+            <div key={`inline-radio`} className="mb-3">
+            <Form.Check name="test" inline type='radio' id="default-checkbox" label={'PROTAN'}
+            onChange={handleRadio}
+            value={'PROTAN'}/>
+            <Form.Check name="test" inline type='radio' id="default-checkbox1" label={'DEUTAN'}
+            onChange={handleRadio}
+            value={'DEUTAN'}/>
+            </div>
+            </Row>
+            <br/>
+            <Row>
+                    <Form.Group as={Col} controlId="formGridPassword">
+                    <Form.Label>{jezik == 1? 'Upišite rezultat HUE testa:' : 'Enter the result of the HUE test'}</Form.Label>
+                    <Form.Control type="number" name='rezultatTesta' onChange={handleInput} value={formData?.rezultatTesta}  />
+                    </Form.Group>
+            </Row>
+            
+            
+            <br/>
+            <Row>
+                <Col xs={5}></Col>
+                <Col xs={5}></Col>
+                <Col xs={2}>
+                <Button type='submit' variant='primary' onClick={startQuestionnaireHandler} >
+                    {jezik==1 ? 'ZAPOČNI UPITNIK' : 'START THE QUESTIONNAIRE'  }
+                    </Button>
+                </Col>
+            </Row>
+            
+            {/* <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>{jezik == 1? 'Ime i prezime' : 'Name and surname'}</Form.Label>
                     <Form.Control type="text" name='ime' placeholder={jezik == 1? 'upisite vase ime i prezime' : 'enter your full name'}
                     onChange={handleInput} value={formData?.ime}  />
                     </Form.Group>
-            </Row>
+            </Row> */}
             <br/>
-            <Row>
+           {startQuestionnaire && <div>
+           <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>{jezik == 1? 'Upišite godinu vašeg rođenja:' : 'Please write the year of your birth:'}</Form.Label>
                     <Form.Control type="number" name='datumRodjenja' onChange={handleInput} value={formData?.datumRodjenja}  />
@@ -103,6 +184,7 @@ const HomePage = ({history}) => {
             </div>
             </Row>
             <br/>
+            {(formData?.dijagnozaDaNe === 'DA' ||  formData?.dijagnozaDaNe === 'YES') && <div>
             <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>{jezik == 1? 'Kada' : 'When'}</Form.Label>
@@ -136,37 +218,16 @@ const HomePage = ({history}) => {
                     <Form.Control as="textarea" name='situacija' onChange={handleInput} value={formData?.situacija}/>
                     </Form.Group>
             </Row>
-            <br/>
-            <Row>
-                <Col>
-                <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p>
-                <Nav.Link target={"_blank"} href='https://www.xrite.com/hue-test'>HUE Test</Nav.Link>
-                    
-                </Col>
-            </Row>
-            <br/>
-            <Row>
-            <Form.Label>{jezik==1 ? 'Izaberite kategoriju vaseg poremećaja vida' : 'Choose the category of your vision disorder'}</Form.Label>
-            <div key={`inline-radio`} className="mb-3">
-            <Form.Check name="test" inline type='radio' id="default-checkbox" label={'PROTAN'}
-            onChange={handleRadio}
-            value={'PROTAN'}/>
-            <Form.Check name="test" inline type='radio' id="default-checkbox1" label={'DEUTAN'}
-            onChange={handleRadio}
-            value={'DEUTAN'}/>
+            </div>}
+            </div>}
             </div>
-            </Row>
+            }
             <br/>
-            <Row>
-                    <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>{jezik == 1? 'Upišite rezultat HUE testa:' : 'Enter the result of the HUE test'}</Form.Label>
-                    <Form.Control type="number" name='rezultatTesta' onChange={handleInput} value={formData?.rezultatTesta}  />
-                    </Form.Group>
-            </Row>
-            <br/>
+            
+            
             </Form.Group>
             </Form>
-            <Row>
+            {start && startQuestionnaire && <Row>
                 <Col xs={3}></Col>
                 <Col xs={3}>
                     <Button style={{marginTop: '20px'}} type='submit' variant='primary' onClick={submitHandler}>
@@ -177,7 +238,7 @@ const HomePage = ({history}) => {
                     
                 </Col>
                 <Col xs={3}></Col>
-            </Row>
+            </Row>}
             
         </div>
     )

@@ -32,13 +32,15 @@ const ResultsScreen = () => {
       }
 
     async function saveResults(db) {
+        const randomString = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7)
+        console.log(randomString)
         const savedPackage = {
             res: testovi,
             podaci: userData,
-            name: userData.ime
+            name: randomString
              
         }
-        await setDoc(doc(db, "rezultati", userData.ime), savedPackage);
+        await setDoc(doc(db, "rezultati", randomString), savedPackage);
     }
 
       const editHandler = (korisnik) => {

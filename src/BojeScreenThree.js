@@ -30,7 +30,7 @@ const BojeScreenThree = ({history}) => {
             serija: item.serija,
             boja1: item.boja1,
             boja2: item.boja2,
-            meta: testovi[15+index] ? testovi[15+index].meta ==1 ? 2 : 1 : Math.random()>=0.5 ? 1 : 2
+            meta: testovi[60+index] ? testovi[60+index].meta ==1 ? 2 : 1 : Math.random()>=0.5 ? 1 : 2
         }
     }))
 
@@ -71,7 +71,7 @@ const BojeScreenThree = ({history}) => {
         console.log(t)
         console.log(Date.now())
         console.log((Date.now()-t)/1000)
-        if(event.key==='a' || event.key==='d'){
+        if(event.key==='a' || event.key==='l'){
             const color = event.key === 'a'? 1 : 2
             if(color===bojanka[counterColor].meta){
             //   console.log("Bravo majstore, POGODAK")
@@ -132,7 +132,7 @@ const BojeScreenThree = ({history}) => {
       //  const rezultatiRef = firebase.automaticDataCollectionEnabled.valueOf()
       //  rezultatiRef.push(savedPackage)
       //  console.log('Ovo putuje na backend: ', savedPackage)
-        if(testovi.length==45){
+        if(testovi.length==180){
             console.log('UPAOOOOOOOOOO')
             
             
@@ -145,7 +145,7 @@ const BojeScreenThree = ({history}) => {
             const interval1 = setTimeout(() =>{
                 history.push({pathname: `/boje`})
                 console.log('idemo na drugi test')
-            } , 2000); 
+            } , 3000); 
         }
         
         
@@ -159,7 +159,22 @@ const BojeScreenThree = ({history}) => {
         <div>
            {/* <h1>Fragennummer: {fragen.length}</h1>  */}
            {/* {show === 0 && <div className='krug prviKrug' style={{backgroundColor: bojanka[counterColor].meta === 1 ? `rgba(${bojanka[counterColor].boja1.r},${bojanka[counterColor].boja1.g},${bojanka[counterColor].boja1.b})` : `rgba(${bojanka[counterColor].boja2.r},${bojanka[counterColor].boja2.g},${bojanka[counterColor].boja2.b})`}}></div>} */}
-           {show === 1 && <h1></h1>}
+           {show === 1 && <div>
+            <section></section>
+            <svg>
+                <filter id="noise">
+                    <feTurbulence id="turbulence">
+                    <animate
+                        attributeName="baseFrequency"
+                        dur="50s"
+                        values="0.9 0.9;0.8 0.8; 0.9 0.9"
+                        repeatCount="indefinite"
+                    ></animate>
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" scale="60"></feDisplacementMap>
+                </filter>
+             </svg>
+               </div>}
            {show === 2 && 
            <div>
                <div className='krug prviKrug' style={{backgroundColor: bojanka[counterColor].meta === 1 ? `rgba(${bojanka[counterColor].boja1.r},${bojanka[counterColor].boja1.g},${bojanka[counterColor].boja1.b})` : `rgba(${bojanka[counterColor].boja2.r},${bojanka[counterColor].boja2.g},${bojanka[counterColor].boja2.b})`}}></div>
