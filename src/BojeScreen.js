@@ -47,7 +47,7 @@ const BojeScreen = ({history}) => {
             setShow(2)
             t=Date.now()
             console.log('drugi tajmer')
-            
+
             
         }, 2000);
             console.log('DODAJE LISTENER')
@@ -64,52 +64,56 @@ const BojeScreen = ({history}) => {
      }, [reset, counterColor]) 
 
      const handleDown = event => {
-        console.log(t)
-        console.log(Date.now())
-        console.log((Date.now()-t)/1000)
-        if(event.key==='a' || event.key==='l'){
-            const color = event.key === 'a'? 1 : 2
-            if(color===bojanka[counterColor].meta){
-            //   console.log("Bravo majstore, POGODAK")
-            //   console.log('counter boje', counterColor)
-               setRezultati([...rezultati, 
-                {serija: bojanka[counterColor].serija,
-                 pogodjen: true,
-                 boja1: bojanka[counterColor].boja1,
-                 boja2: bojanka[counterColor].boja2, 
-                 meta: bojanka[counterColor].meta, 
-                 reactionTime:  Date.now()-t}
-                ])
-           } else {
-            //   console.log("brate ti si daltonista")
-            //   console.log('counter boje', counterColor)
-               setRezultati([...rezultati,
-                 {serija: bojanka[counterColor].serija,
-                    pogodjen: false,
-                    boja1: bojanka[counterColor].boja1,
-                    boja2: bojanka[counterColor].boja2,  
-                    meta: bojanka[counterColor].meta, 
-                    reactionTime: Date.now()-t }
-                ])
-           }
-           if(counterColor===bojanka.length-1){
-           //    console.log('kraj testa')
-           //    console.log(rezultati)
-            //   console.log('imate ukupno', rezultati.reduce((acc,cur)=>acc+(cur.pogodjen === true ? 1:0),0), ' pogodaka')
-               setShow(3)
-               setShow(3)
-           } else{
-           console.log('POVECAVA COUNTER', counterColor)
-              setReset(1)
-              setShow(0)
-              setCounterColor(counterColor + 1)
-           }
-           
-            console.log(event.key)
-            
-            
-            
-        }
+        setShow(4)
+        setTimeout(()=>{
+            console.log(t)
+            console.log(Date.now())
+            console.log((Date.now()-t)/1000)
+            if(event.key==='a' || event.key==='l'){
+                const color = event.key === 'a'? 1 : 2
+                if(color===bojanka[counterColor].meta){
+                //   console.log("Bravo majstore, POGODAK")
+                //   console.log('counter boje', counterColor)
+                   setRezultati([...rezultati, 
+                    {serija: bojanka[counterColor].serija,
+                     pogodjen: true,
+                     boja1: bojanka[counterColor].boja1,
+                     boja2: bojanka[counterColor].boja2, 
+                     meta: bojanka[counterColor].meta, 
+                     reactionTime:  Date.now()-t}
+                    ])
+               } else {
+                //   console.log("brate ti si daltonista")
+                //   console.log('counter boje', counterColor)
+                   setRezultati([...rezultati,
+                     {serija: bojanka[counterColor].serija,
+                        pogodjen: false,
+                        boja1: bojanka[counterColor].boja1,
+                        boja2: bojanka[counterColor].boja2,  
+                        meta: bojanka[counterColor].meta, 
+                        reactionTime: Date.now()-t }
+                    ])
+               }
+               if(counterColor===bojanka.length-1){
+               //    console.log('kraj testa')
+               //    console.log(rezultati)
+                //   console.log('imate ukupno', rezultati.reduce((acc,cur)=>acc+(cur.pogodjen === true ? 1:0),0), ' pogodaka')
+                   setShow(3)
+                   setShow(3)
+               } else{
+               console.log('POVECAVA COUNTER', counterColor)
+                  setReset(1)
+                  setShow(0)
+                  setCounterColor(counterColor + 1)
+               }
+               
+                console.log(event.key)
+                
+                
+                
+            }
+        }, 1000)
+       
          
      }
     
@@ -143,7 +147,8 @@ const BojeScreen = ({history}) => {
         <div>
            {/* <h1>Fragennummer: {fragen.length}</h1>  */}
            {show === 0 && <div className='krug prviKrug' style={{backgroundColor: bojanka[counterColor].meta === 1 ? `rgba(${bojanka[counterColor].boja1.r},${bojanka[counterColor].boja1.g},${bojanka[counterColor].boja1.b})` : `rgba(${bojanka[counterColor].boja2.r},${bojanka[counterColor].boja2.g},${bojanka[counterColor].boja2.b})`}}></div>}
-           {show === 1 && <div>
+           {show === 2 && ''}
+           {show === 4 && <div>
             <section></section>
             <svg>
                 <filter id="noise">

@@ -55,7 +55,7 @@ const HomePage = ({history}) => {
             <Row>
                 <Col xs={3}></Col>
                 <Col xs={3}>
-                <Form.Label>{jezik == 1 ? 'Izaberi jezik' : 'Choose the language'}</Form.Label>
+                <Form.Label>Izaberi jezik/Choose the language</Form.Label>
                 <Form.Control as='select' value={jezik}  
                 onChange={(e)=>{setJezik(e.target.value)}}>
                     <option value={1}>{jezik == 1? 'Srpski' : 'Serbian'}</option>
