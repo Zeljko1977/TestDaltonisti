@@ -17,9 +17,12 @@ const ResultsScreen = () => {
 
     useEffect(()=>{
       //  getResults(db)
-      saveResults(db)
+      if(testovi.length !==0){
+        saveResults(db)
+      }
+      
         
-    },[])
+    },[testovi])
    
 
     async function getResults(db) {
@@ -104,6 +107,8 @@ const ResultsScreen = () => {
                             <th>meta</th>
                             <th>pogodjen</th>
                             <th>brzina reakcije [ms]</th>
+                            <th>kategorija</th>
+                            <th>linija</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,6 +118,8 @@ const ResultsScreen = () => {
                                 <td>{item.meta}</td>
                                 <td>{item.pogodjen===true? '+' : '-'}</td>
                                 <td>{item.reactionTime}</td>
+                                <td>{item.kategorija}</td>
+                                <td>{item.linija}</td>
                             </tr>  
                         ))}
                     </tbody>

@@ -72,11 +72,22 @@ const HomePage = ({history}) => {
             </Row>
             <br/>
             <Row>
+            <Card>
+                    <Card.Body>SAGLASNOST ZA UČESTVOVANJE U ISTRAŽIVANJU
+Ovim potvrđujem da sam saglasan/na da učestvujem u istraživanju o prepoznavanju i pamćenju boja. Potvrđujem da mi je objašnjeno šta se od mene zahteva u istraživanju.
+Shvatam da učestvovanje u ovom istraživanju ni na koji način neće da mi nanese štetu, da bude ugrožavajuće, da me izloži neprijatnostima, niti će se tokom eksperimenta koristiti tehnike obmanjivanja. Ipak, ako nisam zadovoljan/na tretmanom, u svakom trenutku mogu da prekinem istraživanje bez objašnjenja. Objašnjeno mi je da će moji podaci biti korišćeni isključivo u naučne svrhe te da niko sa strane neće moći da uspostavi vezu između mene lično i mog postignuća u eksperimentu. Dodatno se o učestvovanju u istraživanju mogu informisati kod istraživača putem imejla:
+dr Ivana Jakovljev: ivana.jakovljev@ff.uns.ac.rs
+dr Sunčica Zdravković: suncica.zdravkovic@ff.uns.ac.rs
+
+Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpunosti razumeli gore navedene informacije i da prihvatate učešće u istraživanju.
+</Card.Body>
+                    </Card>
+            </Row>
+            <br/>
+            <Row>
                 
                 <Col xs={9}>
-                    <Card>
-                    <Card.Body>Ovde text za konsent formu bla ns s s dsddsdd csc dc sccscs. sdsd sdsdc</Card.Body>
-                    </Card>
+                    
                 </Col>
                 <Col xs={1}>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -92,11 +103,11 @@ const HomePage = ({history}) => {
             <br/>
             {start &&  <div>
                 <Card>
-                    <Card.Body>Ovde text za instrukcije lbd  dwd wd wd d dwddw wdwed. wdd ewd wef wfe</Card.Body>
+                    <Card.Body>U okviru ovog prvog koraka, molim Vas da kliknete na link ispod koji će Vas odvesti do testa opažanja boja. Test će se otvoriti u novom tabu i traje okvirno 5 minuta. Uradite test do kraja i kao finalni korak kliknite na link „No, thanks. Continue to the test result“ (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.</Card.Body>
                     </Card>
                 <Row>
                 <Col>
-                <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p>
+                {/* <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p> */}
                 <Nav.Link target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>Colour Blind Test</Nav.Link>
                     
                 </Col>

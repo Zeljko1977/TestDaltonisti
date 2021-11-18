@@ -29,6 +29,8 @@ const BojeScreen = ({history}) => {
             serija: item.serija,
             boja1: item.boja1,
             boja2: item.boja2,
+            kategorija: item.kategorija,
+            linija: item.linija,
             meta: testovi[index] ? testovi[index].meta ==1 ? 2 : 1 : Math.random()>=0.5 ? 1 : 2
         }
     }))
@@ -79,7 +81,9 @@ const BojeScreen = ({history}) => {
                      pogodjen: true,
                      boja1: bojanka[counterColor].boja1,
                      boja2: bojanka[counterColor].boja2, 
-                     meta: bojanka[counterColor].meta, 
+                     meta: bojanka[counterColor].meta,
+                     kategorija: bojanka[counterColor].kategorija,
+                     linija: bojanka[counterColor].linija, 
                      reactionTime:  Date.now()-t}
                     ])
                } else {
@@ -90,7 +94,9 @@ const BojeScreen = ({history}) => {
                         pogodjen: false,
                         boja1: bojanka[counterColor].boja1,
                         boja2: bojanka[counterColor].boja2,  
-                        meta: bojanka[counterColor].meta, 
+                        meta: bojanka[counterColor].meta,
+                        kategorija: bojanka[counterColor].kategorija,
+                        linija: bojanka[counterColor].linija, 
                         reactionTime: Date.now()-t }
                     ])
                }
