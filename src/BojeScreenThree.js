@@ -6,6 +6,7 @@ import {bojep as bojeProtan} from './testboje/set2'
 import app from './util/firebase'
 import { useDispatch, useSelector } from 'react-redux';
 import {saveTestData} from './actions/testActions'
+let blokada = true
 
 const db = getFirestore(app);
 
@@ -47,10 +48,12 @@ const BojeScreenThree = ({history}) => {
           }
         const interval1 = setTimeout(() =>{
             setShow(1)
+            blokada = true
             console.log('prvi tajmer')
         } , 1000); 
         const interval2 = setTimeout(() => {
             setShow(2)
+            blokada = false
             t=Date.now()
             console.log('drugi tajmer')
             
@@ -70,10 +73,13 @@ const BojeScreenThree = ({history}) => {
      }, [reset, counterColor]) 
 
      const handleDown = event => {
+        /* console.log('blokada: ', blokada)
         console.log(t)
         console.log(Date.now())
-        console.log((Date.now()-t)/1000)
-        if(event.key==='a' || event.key==='l'){
+        console.log((Date.now()-t)/1000) */
+        if((event.key==='a' || event.key==='l') && !blokada){
+            console.log((Date.now()-t)/1000)
+            blokada = true
             const color = event.key === 'a'? 1 : 2
             if(color===bojanka[counterColor].meta){
             //   console.log("Bravo majstore, POGODAK")
