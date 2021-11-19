@@ -7,6 +7,8 @@ import app from './util/firebase'
 import { useDispatch, useSelector } from 'react-redux';
 import {saveTestData} from './actions/testActions'
 
+let blokada = true
+
 const db = getFirestore(app);
 
 
@@ -17,7 +19,7 @@ const BojeScreen = ({history}) => {
     const form = useSelector(state => state.form)
     const {userData} = form;
     const boje = userData.test == 'DEUTAN' ? bojeDeutan : bojeProtan
-
+    
     const [show, setShow] = useState(0)
     const [name, setName] = useState('')
     const [rezultati, setRezultati] = useState([])
@@ -43,16 +45,17 @@ const BojeScreen = ({history}) => {
           }
         const interval1 = setTimeout(() =>{
             setShow(1)
-            console.log('prvi tajmer')
+         //   console.log('prvi tajmer')
         } , 1000); 
         const interval2 = setTimeout(() => {
             setShow(2)
             t=Date.now()
-            console.log('drugi tajmer')
+           console.log('drugi tajmer')
+           blokada = false
 
             
         }, 2000);
-            console.log('DODAJE LISTENER')
+         //   console.log('DODAJE LISTENER')
             window.addEventListener("keydown", handleDown)
         
         
@@ -60,18 +63,23 @@ const BojeScreen = ({history}) => {
         return () => {
             clearInterval(interval1);
             clearInterval(interval2);
-            console.log('UKLANJA LISTENER')
+         //   console.log('UKLANJA LISTENER')
             window.removeEventListener("keydown", handleDown)
           };
      }, [reset, counterColor]) 
 
      const handleDown = event => {
+         
+         console.log('Evo ga show', show)
+        if((event.key==='a' || event.key==='l') && !blokada){
         setShow(4)
+        
         setTimeout(()=>{
+            blokada = true
             console.log(t)
             console.log(Date.now())
             console.log((Date.now()-t)/1000)
-            if(event.key==='a' || event.key==='l'){
+            
                 const color = event.key === 'a'? 1 : 2
                 if(color===bojanka[counterColor].meta){
                 //   console.log("Bravo majstore, POGODAK")
@@ -117,10 +125,10 @@ const BojeScreen = ({history}) => {
                 
                 
                 
-            }
+            
         }, 1000)
-       
-         
+            
+        }
      }
     
     const saveHandler = async () => {
