@@ -18,6 +18,7 @@ const ResultsScreen = () => {
     useEffect(()=>{
       //  getResults(db)
       if(testovi.length !==0){
+          console.log('snima')
         saveResults(db)
       }
       

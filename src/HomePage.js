@@ -20,10 +20,10 @@ const HomePage = ({history}) => {
       },[])
     const submitHandler = () => {
         dispatch(saveFormData(formData))
-        const interval1 = setTimeout(() =>{
+        /* const interval1 = setTimeout(() =>{
             history.push({pathname: `/boje`})
-        } , 5000); 
-        
+        } , 5000);  */
+        history.push({pathname: `/uputstvo1`})
     }
     const handleInput = (e) => {
         

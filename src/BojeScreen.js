@@ -138,10 +138,11 @@ const BojeScreen = ({history}) => {
       //  const rezultatiRef = firebase.automaticDataCollectionEnabled.valueOf()
       //  rezultatiRef.push(savedPackage)
       //  console.log('Ovo putuje na backend: ', savedPackage)
-      const interval1 = setTimeout(() =>{
+      /* const interval1 = setTimeout(() =>{
         history.push({pathname: `/bojethree`})
         console.log('idemo na drugi test')
-    } , 5000); 
+    } , 5000); */
+    history.push({pathname: `/uputstvo2`}) 
         
     }
 
@@ -185,7 +186,7 @@ const BojeScreen = ({history}) => {
                     <Col xs={8}>
                         <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Kliknite dugme i sacekajte 5 sekundi</Form.Label>
+                        {/* <Form.Label>Kliknite dugme i sacekajte 5 sekundi</Form.Label> */}
                         {/* <Form.Control value={name} onChange={(e)=>setName(e.target.value)} type="text" size='lg' /> */}
                         </Form.Group>
                         </Form>

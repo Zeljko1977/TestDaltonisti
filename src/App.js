@@ -9,6 +9,9 @@ import BojeScreen from './BojeScreen'
 import BojeScreenThree from './BojeScreenThree'
 import HomePage from './HomePage';
 import ResultsScreen from './ResultsScreen'
+import Uputstvo1Screen from './Uputstvo1Screen';
+import Uputstvo2Screen from './Uputstvo2Screen';
+import ZahvalnicaScreen from './ZahvalnicaScreen';
 import store from './store'
 
 
@@ -22,7 +25,10 @@ const App = () => {
                 <Route exact path='/' component={HomePage} />  
                 <Route path='/boje' component={BojeScreen} /> 
                 <Route path='/bojethree' component={BojeScreenThree} /> 
-                <Route path='/results' component={ResultsScreen} /> 
+                <Route path='/results' component={ResultsScreen} />
+                <Route path='/uputstvo1' component={Uputstvo1Screen} />
+                <Route path='/uputstvo2' component={Uputstvo2Screen} />
+                <Route path='/zahvalnica' component={ZahvalnicaScreen} />  
             </Container>
           </main>
         {/* <Footer /> */}

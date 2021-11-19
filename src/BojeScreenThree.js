@@ -142,16 +142,18 @@ const BojeScreenThree = ({history}) => {
             console.log('UPAOOOOOOOOOO')
             
             
-            const interval1 = setTimeout(async() =>{
+            /* const interval1 = setTimeout(async() =>{
                 
                 history.push({pathname: `/results`})
-            } , 2000);
+            } , 2000); */
+            history.push({pathname: `/zahvalnica`})
             
         }else{
-            const interval1 = setTimeout(() =>{
+            /* const interval1 = setTimeout(() =>{
                 history.push({pathname: `/boje`})
                 console.log('idemo na drugi test')
-            } , 3000); 
+            } , 3000); */
+            history.push({pathname: `/uputstvo1`}) 
         }
         
         
@@ -197,7 +199,7 @@ const BojeScreenThree = ({history}) => {
                     <Col xs={8}>
                         <Form>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Kliknite dugme i sacekajte 5 sekundi</Form.Label>
+                        {/* <Form.Label>Kliknite dugme i sacekajte 5 sekundi</Form.Label> */}
                         {/* <Form.Control value={name} onChange={(e)=>setName(e.target.value)} type="text" size='lg' /> */}
                         </Form.Group>
                         </Form>
