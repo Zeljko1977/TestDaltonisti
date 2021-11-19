@@ -13,8 +13,8 @@ const Uputstvo2Screen = ({history}) => {
     return (
         <div>
             <p>
-            Blok 2. Uputstva
-Na ekranu će biti prikazan krug čiju boju treba da zapamtite. Krug će nestati sa ekrana i nakon nekoliko sekundi pojaviće se dva kruga, a vaš zadatak je da odgovorite koji od njih je iste boje kao onaj kog ste prethodno videli. Ukoliko mislite da je to krug koji se nalazi sa leve strane ekrana, pritisnite taster A, a ukoliko mislite da je to krug koji se nalazi sa desne strane ekrana pritisnite taster L. Trudite se da odgovarate što brže i što tačnije. Ovaj eksperimentalni blok traje oko 10 minuta. Kliknite mišem na „NASTAVAK“ da započnete eksperimentalni blok.
+            Blok 1. Uputstva
+            Na ekranu će biti prikazana tri kruga – jedan u gornjem delu ekrana i dva ispod njega (levo i desno). Vaš zadatak je da odgovorite koji od dva donja kruga je iste boje kao gornji. Ukoliko mislite da je levi, pritisnite taster A, a ukoliko mislite da je desni pritisnite taster L. Trudite se da odgovarate što brže i što tačnije. Ovaj eksperimentalni blok traje oko 5 minuta. Kliknite mišem na „NASTAVAK“ da započnete eksperimentalni blok.
 
             </p>
             <Button style={{marginTop: '20px'}} type='submit' variant='primary' onClick={submitHandler}>
