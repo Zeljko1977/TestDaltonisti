@@ -6,7 +6,7 @@ const Uputstvo1Screen = ({history}) => {
     const submitHandler = () => {
        
         const interval1 = setTimeout(() =>{
-            history.push({pathname: `/bojethree`})
+            history.push({pathname: `/boje`})
         } , 5000); 
         
     }
