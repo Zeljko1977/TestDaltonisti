@@ -99,6 +99,20 @@ const ResultsScreen = () => {
                 <Col>
                 <Button variant="success" onClick={backHandler}>Nazad</Button>
                 </Col>
+                </Row>
+                <Row>
+                    <Col>
+                    <p>Zanimanje: {korisnik.podaci.zanimanje}</p>
+                    </Col>
+                    <Col>
+                    <p>Rezultat testa: {korisnik.podaci.test}</p>
+                    </Col>
+                    <Col>
+                    <p>Datum rodjenja: {korisnik.podaci.datumRodjenja}</p>
+                    </Col>
+                    <Col>
+                    <p>Pol: {korisnik.podaci.pol}</p>
+                    </Col>
                 </Row>           
                 
                 <Table striped bordered hover variante='dark'>

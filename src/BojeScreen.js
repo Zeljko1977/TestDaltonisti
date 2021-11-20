@@ -18,7 +18,23 @@ const BojeScreen = ({history}) => {
     const {testovi} = test;
     const form = useSelector(state => state.form)
     const {userData} = form;
-    const boje = userData.test == 'DEUTAN' ? bojeDeutan : bojeProtan
+    let vrstaTesta
+    switch (userData.test)
+    {
+   case "MILD DEUTAN", "MODERATE DEUTAN", "SEVERE DEUTAN":
+       vrstaTesta = 'DEUTAN';
+       break;
+    case "MILD PROTAN", "MODERATE PROTAN", "SEVERE PROTAN":
+       vrstaTesta = 'PROTAN';
+       break;
+    case "MILD TRITAN", "MODERATE TRITAN", "SEVERE TRITAN", "NORMAL COLOR VISION":
+       vrstaTesta = Math.random()>0.5 ? 'PROTAN': 'DEUTAN';
+       break;    
+   default:
+       vrstaTesta = Math.random()>0.5 ? 'PROTAN': 'DEUTAN';
+       break;
+    }
+    const boje = vrstaTesta == 'DEUTAN' ? bojeDeutan : bojeProtan
     
     const [show, setShow] = useState(0)
     const [name, setName] = useState('')

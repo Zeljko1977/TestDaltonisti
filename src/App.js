@@ -9,8 +9,8 @@ import BojeScreen from './BojeScreen'
 import BojeScreenThree from './BojeScreenThree'
 import HomePage from './HomePage';
 import ResultsScreen from './ResultsScreen'
-import Uputstvo1Screen from './Uputstvo2Screen';
-import Uputstvo2Screen from './Uputstvo1Screen';
+import Uputstvo1Screen from './Uputstvo1Screen';
+import Uputstvo2Screen from './Uputstvo2Screen';
 import ZahvalnicaScreen from './ZahvalnicaScreen';
 import store from './store'
 

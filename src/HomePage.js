@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form, Row, Col, Nav, Card } from 'react-bootstrap'
+import { Button, Form, Row, Col, Nav, Card, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import {saveFormData} from './actions/testActions'
 import {RESET_TEST_DATA, RESET_FORM_DATA} from './constants/testConstants'
+import slika from './CV-TEST.jpg'
 
 const HomePage = ({history}) => {
     const [jezik, setJezik] = useState(1)
     const [agree, setAgree] = useState(false)
     const [start, setStart] = useState(false)
+    const [start2, setStart2] = useState(false)
     const [startQuestionnaire, setStartQuestionnaire] = useState(false)
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({jezik: 1})
 
     const dispatch = useDispatch()
 
@@ -40,6 +42,11 @@ const HomePage = ({history}) => {
         setStart(true)
     }
 
+    const start2Handler = (e) => {
+        e.preventDefault()
+        setStart2(true)
+    }
+
     const checkHandler = (e) => {
         console.log(e.target.checked)
         setAgree(e.target.checked)
@@ -48,100 +55,256 @@ const HomePage = ({history}) => {
         e.preventDefault()
         setStartQuestionnaire(true)
     }
+    const jezikHandler = (e) => {
+        console.log(e.target.value)
+        setJezik(e.target.value)
+        setFormData({...formData, 'jezik' : e.target.value})
+    }
     return (
         <div>
             <Form>
             <Form.Group controlId='selectedMetering'>
             <Row>
                 <Col xs={3}></Col>
-                <Col xs={3}>
-                <Form.Label>Izaberi jezik/Choose the language</Form.Label>
+                <Col xs={6}>
+                <Form.Label>Izaberite jezik/Choose the language</Form.Label>
                 <Form.Control as='select' value={jezik}  
-                onChange={(e)=>{setJezik(e.target.value)}}>
+                onChange={jezikHandler}>
                     <option value={1}>{jezik == 1? 'Srpski' : 'Serbian'}</option>
                     <option value={0}>{jezik == 1? 'Engleski' : 'English'}</option>
                 </Form.Control>
                 </Col>
-                <Col xs={3}>
-                
-                </Col>
-                <Col xs={3}>
-                
-                    
-                </Col>
+                <Col xs={3}></Col>
             </Row>
-            <br/>
-            <Row>
-            <Card>
-                    <Card.Body>SAGLASNOST ZA UČESTVOVANJE U ISTRAŽIVANJU
-Ovim potvrđujem da sam saglasan/na da učestvujem u istraživanju o prepoznavanju i pamćenju boja. Potvrđujem da mi je objašnjeno šta se od mene zahteva u istraživanju.
-Shvatam da učestvovanje u ovom istraživanju ni na koji način neće da mi nanese štetu, da bude ugrožavajuće, da me izloži neprijatnostima, niti će se tokom eksperimenta koristiti tehnike obmanjivanja. Ipak, ako nisam zadovoljan/na tretmanom, u svakom trenutku mogu da prekinem istraživanje bez objašnjenja. Objašnjeno mi je da će moji podaci biti korišćeni isključivo u naučne svrhe te da niko sa strane neće moći da uspostavi vezu između mene lično i mog postignuća u eksperimentu. Dodatno se o učestvovanju u istraživanju mogu informisati kod istraživača putem imejla:
-dr Ivana Jakovljev: ivana.jakovljev@ff.uns.ac.rs
-dr Sunčica Zdravković: suncica.zdravkovic@ff.uns.ac.rs
+            <br/><Row>
+            {jezik==1 && <Card>
+                    <Card.Body><p> <b>OPIS EKSPERIMENTA</b> <br/><br/>
 
-Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpunosti razumeli gore navedene informacije i da prihvatate učešće u istraživanju.
+                    Između 5 i 10% ljudi ima neke poteškoće sa razlikovanjem boja i mi, istraživači sa
+Filozofskog fakulteta i Fakulteta tehničkih nauka u Novom Sadu, sada sprovodimo
+istraživanje o viđenju i pamćenju boja. Nadamo se da će nam dobijeni rezultati pomoći da
+dalje razvijemo tehnologije za optimizaciju slike na različitim uređajima (mobilni telefoni,
+tableti, televizori, računar) tako da olakšamo njihovo korišćenje ljudima sa poteškoćama u
+opažanju boja.<br/><br/>
+Da bi razumeli opažaje, pamćenje i usmeravaje pažnje na boje potrebni su nam podaci od
+dobrovoljaca poput Vas.<br/>
+Dakle, ako pristanete da nam pomognete, Vaše učešće istraživanju je dobrovoljno i potpuno
+anonimno. Vaši podaci će biti korišćeni isključivo u naučne svrhe i niko sa strane neće moći
+da uspostavi vezu između Vas lično i Vaših odgovora u istraživanju.<br/>
+Ukoliko na kraju i poželite da nas lično kontaktirate i time nam otkrijete svoj identitet, mi ga i
+dalje nećemo nikom drugom otkriti, odnosno Vaše ime i prezime nikada neće biti navedeno u
+izveštaju o rezultatima niti i u jednoj publikaciji rezultata. Izveštaji o rezultatima sadržaće
+samo informacije za cele grupe ispitanika, nikako Vaše individualne rezultate.<br/>
+U prvom koraku istraživanja, bićete zamoljeni da uradite kratak test opažanja boja koji
+pokazuje da li imate nekih poteškoća u razlikovanju boja. Nakon toga, bićete zamoljeni da
+odgovorite na nekoliko opštih pitanja (vaš pol, uzrast, zanimanje, da li ste ranije imali
+poteškoća sa razlikovanjem boja). Nakon toga, bićete zamoljeni da uradite nekoliko zadataka
+u kojima će vam biti prikazivani obojeni objekti, a vaš zadatak će biti ili da zapamtite boju
+objekta ili da prepoznate objekte koji su iste boje.<br/><br/>
+Većina ispitanika sve ovo završi za oko 25 minuta.<br/><br/>
+Ukoliko želite da nastavite sa učešćem u ovom istraživanju, kliknite DALJE da pročitate
+Saglasnost za učestvovanje u istraživanju.</p>
 </Card.Body>
-                    </Card>
+                    </Card>}
+                    {jezik!=1 && <Card>
+                <Card.Body><p><b>EXPERIMENT INFO</b><br/><br/>
+    About 5-10% of people suffers from some form of difficulties in color discrimination. We,
+researchers from the Faculty of Philosophy and the Faculty of Technical sciences (University
+of Novi Sad, Serbia) are conducting a study about colour perception and memory. We hope
+that these results will help us to further develop technologies for image optimisation for
+various devices (mobile phones, tablets, TVs and computer screens) improving them for
+people with color deficiencies.<br/><br/>
+In order to understand color perception, memory and attention we need data from volunteers
+like yourself.<br/>
+Therefore, if you are so kind to help us, your participation will be voluntary, confidential and
+completely anonymous. Your data will be used only for scientific purposes, and no one will
+be able to establish a link between you personally and your responses.<br/>
+UEven if, at the end of the experiment, you decide to contact us to comment on this study, and
+in the process, you reveal your identity, we will still keep your identity confidential, and we
+will never put your name with the reports on results. The results will always contain only the
+group values and never your individual data.<br/>
+First step will be to complete a short color vision test to confirm whether you have any
+difficulties in color discrimination. Next, we will ask you a few general questions (your age,
+gender, occupation, previous difficulties in color discrimination – if any). Finally, you will be
+asked to complete several tasks in which color objects will be shown on the screen and your
+task will be to memorize colors or to match objects by their color.<br/><br/>
+Most people finalize these tasks in about 25 minutes.<br/><br/>
+If you want to continue with the participation in this study, please click on the button NEXT
+to read the <b>Participant Consent form.</b></p>
+                </Card.Body>
+             </Card>}
             </Row>
             <br/>
             <Row>
                 
-                <Col xs={9}>
+                <Col xs={6}>
                     
-                </Col>
-                <Col xs={1}>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label={jezik==1 ? 'Slazem se' : "I agree"} onChange={(e)=>checkHandler(e)}/>
-                </Form.Group>
                 </Col>
                 <Col xs={2}>
-                <Button type='submit' variant='primary' onClick={startHandler} disabled={!agree}>
-                    {jezik==1 ? 'ZAPOČNI EKSPERIMENT' : 'START THE EXPERIMENT'}
+
+                </Col>
+                <Col xs={4}>
+                <Button type='submit' variant='primary' onClick={start2Handler}>
+                    {jezik==1 ? 'DALJE' : 'NEXT'}
                     </Button>
                 </Col>
             </Row>
+           
+            <br/>
+
+            <Row>
+            {jezik == 1 && start2 && <Card>
+                    <Card.Body><p> <b>SAGLASNOST ZA UČESTVOVANJE U ISTRAŽIVANJU</b> <br/><br/>
+
+Ovim potvrđujem da sam saglasan/na da učestvujem u istraživanju o prepoznavanju i pamćenju boja. Potvrđujem da mi je objašnjeno šta se od mene zahteva u istraživanju.<br/>
+Shvatam da učestvovanje u ovom istraživanju ni na koji način neće da mi nanese štetu, da bude ugrožavajuće, da me izloži neprijatnostima, niti će se tokom eksperimenta koristiti tehnike obmanjivanja. Ipak, ako nisam zadovoljan/na tretmanom, u svakom trenutku mogu da prekinem istraživanje bez objašnjenja. Objašnjeno mi je da će moji podaci biti korišćeni isključivo u naučne svrhe te da niko sa strane neće moći da uspostavi vezu između mene lično i mog postignuća u eksperimentu. Dodatno se o učestvovanju u istraživanju mogu informisati kod istraživača putem imejla:<br/>
+dr Ivana Jakovljev: ivana.jakovljev@ff.uns.ac.rs<br/>
+dr Sunčica Zdravković: suncica.zdravkovic@ff.uns.ac.rs<br/><br/>
+
+Klikom na polje <b>"SLAŽEM SE"</b> potvrđujete da ste pročitali i u potpunosti razumeli gore navedene informacije i da prihvatate učešće u istraživanju.
+Za nastavak kliknite na dugme <b>ZAPOČNITE EKSPERIMENT</b>.</p>
+</Card.Body>
+                    </Card>}
+                    {jezik != 1 && start2 && <Card>
+                <Card.Body><p><b>PARTICIPANT CONSENT FORM</b><br/><br/>
+
+                I hereby confirm that I want to participate in the study about colour perception and memory. I
+confirm that I was informed about what is expected from me in this study. <br/>
+I understand that the participation in this study will not cause me any harm, will not endanger me in any way,
+will not expose me to any inconvenience nor that I am going to be deceived in any way at any point during the study. However, if for any reason during this study I do not feel comfortable,
+I can stop the study without any explanation. I confirm that I was informed that my data will be used only for the scientific purposes and that the link between my data and my identity
+will not be accessible to anyone else but the researchers working on the project. If I need, I can contact researchers with further questions regarding the study:<br/>
+dr Ivana Jakovljev: ivana.jakovljev@ff.uns.ac.rs<br/>
+dr Sunčica Zdravković: suncica.zdravkovic@ff.uns.ac.rs<br/><br/>
+
+By clicking the button <b>NEXT</b> you confirm that you have read and completely understood the
+Consent form and that you freely consent to participate in this study.</p>
+                </Card.Body>
+            </Card>}
+            </Row>
+            <br/>
+            {start2 && <Row>
+                
+                <Col xs={6}>
+                    
+                </Col>
+                <Col xs={2}>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label={jezik==1 ? 'Slažem se' : "I agree"} onChange={(e)=>checkHandler(e)}/>
+                </Form.Group>
+                </Col>
+                <Col xs={4}>
+                <Button type='submit' variant='primary' onClick={startHandler} disabled={!agree}>
+                    {jezik==1 ? 'ZAPOČNITE EKSPERIMENT' : 'START THE EXPERIMENT'}
+                    </Button>
+                </Col>
+            </Row>}
             <br/>
             {start &&  <div>
-                <Card>
-                    <Card.Body>U okviru ovog prvog koraka, molim Vas da kliknete na link ispod koji će Vas odvesti do testa opažanja boja. Test će se otvoriti u novom tabu i traje okvirno 5 minuta. Uradite test do kraja i kao finalni korak kliknite na link „No, thanks. Continue to the test result“ (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.</Card.Body>
-                    </Card>
+                {jezik==1 && <Card>
+                    <Card.Body>
+                        <p> U okviru ovog prvog koraka, molim Vas da kliknete na link ispod koji će Vas odvesti do testa opažanja boja.
+                            <br/> Test će se otvoriti u novom tabu i traje okvirno 5 minuta. Uradite test do kraja i kao finalni korak kliknite na link <b>No, thanks. Continue to the test result.</b> (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je izražen poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.</p>
+                            
+                            </Card.Body>
+                    </Card>}
+                    {jezik!=1 && <Card>
+                    <Card.Body>
+                        <p>As part of this first step, please click on the link below to take you to the color perception test. 
+                            The test will open in a new tab and last approximately 5 minutes. 
+                            Take the test to the end and as a final step, click on the link <b>No, thanks. Proceed to the test results.</b> (see picture below) 
+                            Furthermore, you will get test results that will contain two pieces of information - what type of disorder you have (protan, deutan, tritan) and to what extent the disorder is pronounced (mild, moderate, severe). It is also possible to get the category "normal vision perception" as a result. 
+                            Remember the result and return to this window to select the category of the obtained result and proceed to the next test step.
+                        </p>
+                            
+                    </Card.Body>
+                </Card>}
+                <br/>
+                <br/>
+                <Image src={slika} fluid/>
+                <br/>
+                <br/>
                 <Row>
                 <Col>
                 {/* <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p> */}
-                <Nav.Link target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>Colour Blind Test</Nav.Link>
+                <Nav.Link style={{ color: 'white', padding: '0.375rem 0.75rem', borderRadius: '0.4em', border: '1px solid #78C2AD', backgroundColor: '#78C2AD', display:'inline-block'}} target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>COLOUR VISION TEST</Nav.Link>
                     
                 </Col>
             </Row>
+            
             <br/>
             <Row>
-            <Form.Label>{jezik==1 ? 'Izaberite kategoriju vaseg poremećaja vida' : 'Choose the category of your vision disorder'}</Form.Label>
+            <Form.Label>{jezik==1 ? 'Izaberite kategoriju Vašeg poremećaja vida' : 'Choose the category of your vision disorder'}</Form.Label>
             <div key={`inline-radio`} className="mb-3">
-            <Form.Check name="test" inline type='radio' id="default-checkbox" label={'PROTAN'}
+            <Row>
+            <Col>
+            <Form.Check name="test" inline type='radio' id="default-checkbox-P1" label={'MILD PROTAN'}
             onChange={handleRadio}
-            value={'PROTAN'}/>
-            <Form.Check name="test" inline type='radio' id="default-checkbox1" label={'DEUTAN'}
+            value={'MILD PROTAN'}/>
+            <br/>
+                        <Form.Check name="test" inline type='radio' id="default-checkbox-P2" label={'MODERATE PROTAN'}
             onChange={handleRadio}
-            value={'DEUTAN'}/>
+            value={'MODERATE PROTAN'}/>
+            <br/>
+                        <Form.Check name="test" inline type='radio' id="default-checkbox-P3" label={'SEVERE PROTAN'}
+            onChange={handleRadio}
+            value={'SEVERE PROTAN'}/>
+            
+            </Col>
+            <Col>
+            <Form.Check name="test" inline type='radio' id="default-checkbox-D1" label={'MILD DEUTAN'}
+            onChange={handleRadio}
+            value={'MILD DEUTAN'}/>
+            <br/>
+             <Form.Check name="test" inline type='radio' id="default-checkbox-D2" label={'MODERATE DEUTAN'}
+            onChange={handleRadio}
+            value={'MODERATE DEUTAN'}/>
+            <br/>
+             <Form.Check name="test" inline type='radio' id="default-checkbox-D3" label={'SEVERE DEUTAN'}
+            onChange={handleRadio}
+            value={'SEVERE DEUTAN'}/>
+            </Col>
+            <Col>
+            <Form.Check name="test" inline type='radio' id="default-checkbox-T1" label={'MILD TRITAN'}
+            onChange={handleRadio}
+            value={'MILD TRITAN'}/>
+            <br/>
+             <Form.Check name="test" inline type='radio' id="default-checkbox-T2" label={'MODERATE TRITAN'}
+            onChange={handleRadio}
+            value={'MODERATE TRITAN'}/>
+            <br/>
+             <Form.Check name="test" inline type='radio' id="default-checkbox-T3" label={'SEVERE TRITAN'}
+            onChange={handleRadio}
+            value={'SEVERE TRITAN'}/>
+            <br/>
+             <Form.Check name="test" inline type='radio' id="default-checkbox-N" label={'NORMAL COLOR VISION'}
+            onChange={handleRadio}
+            value={'NORMAL COLOR VISION'}/>
+            </Col>
+            </Row>
+            
+            
+            
             </div>
             </Row>
             <br/>
-            <Row>
+            {/* <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>{jezik == 1? 'Upišite rezultat HUE testa:' : 'Enter the result of the HUE test'}</Form.Label>
                     <Form.Control type="number" name='rezultatTesta' onChange={handleInput} value={formData?.rezultatTesta}  />
                     </Form.Group>
-            </Row>
+            </Row>*/}
             
             
             <br/>
             <Row>
-                <Col xs={5}></Col>
-                <Col xs={5}></Col>
-                <Col xs={2}>
+                <Col xs={4}></Col>
+                <Col xs={4}>                
                 <Button type='submit' variant='primary' onClick={startQuestionnaireHandler} >
-                    {jezik==1 ? 'ZAPOČNI UPITNIK' : 'START THE QUESTIONNAIRE'  }
+                    {jezik==1 ? 'ZAPOČNITE UPITNIK' : 'START THE QUESTIONNAIRE'  }
                     </Button>
-                </Col>
+                    </Col>
+                <Col xs={4}></Col>
             </Row>
             
             {/* <Row>
@@ -155,13 +318,13 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
            {startQuestionnaire && <div>
            <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>{jezik == 1? 'Upišite godinu vašeg rođenja:' : 'Please write the year of your birth:'}</Form.Label>
+                    <Form.Label>{jezik == 1? 'Upišite godinu Vašeg rođenja:' : 'Please write the year of your birth:'}</Form.Label>
                     <Form.Control type="number" name='datumRodjenja' onChange={handleInput} value={formData?.datumRodjenja}  />
                     </Form.Group>
             </Row>
             <br/>
             <Row>
-            <Form.Label>{jezik==1 ? 'Kog ste pola: Ženski/Muški/Nešto drugo' : 'What is your gender: Female/Male/Something else'}</Form.Label>
+            <Form.Label>{jezik==1 ? 'Kog ste pola?' : 'What is your gender?'}</Form.Label>
             <div key={`inline-radio`} className="mb-3">
             <Form.Check name="pol" inline type='radio' id="default-checkbox" label={jezik == 1? 'Ženski' : 'Female'}
             value={jezik == 1? 'Ženski' : 'Female'}
@@ -177,7 +340,7 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
             <br/>
             <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>{jezik == 1? 'Koje je Vaše zanimanje:' : 'What is your occupation:'}</Form.Label>
+                    <Form.Label>{jezik == 1? 'Koje je Vaše zanimanje?' : 'What is your occupation?'}</Form.Label>
                     <Form.Control type="text" name='zanimanje'  onChange={handleInput} value={formData?.zanimanje}/>
                     </Form.Group>
             </Row>
@@ -186,7 +349,7 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
             
 
             <Row>
-            <Form.Label>{jezik==1 ? 'Da li ste ikada bili dijagnostikovani kao osoba sa teškoćama u prepoznavanju boja: Da/Ne' : 'Were you ever diagnosed with colour blindness by medical practitioners: Yes/No'}</Form.Label>
+            <Form.Label>{jezik==1 ? 'Da li Ste ikada bili dijagnostikovani kao osoba sa teškoćama u prepoznavanju boja?' : 'Were you ever diagnosed with colour blindness by medical practitioners?'}</Form.Label>
             <div key={`inline-radio`} className="mb-3">
             <Form.Check name='dijagnozaDaNe' inline type='radio' id="default-checkbox" label={jezik == 1? 'DA' : 'YES' } value={jezik == 1? 'DA' : 'YES' }
             onChange={handleRadio} />
@@ -198,7 +361,7 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
             {(formData?.dijagnozaDaNe === 'DA' ||  formData?.dijagnozaDaNe === 'YES') && <div>
             <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>{jezik == 1? 'Kada' : 'When'}</Form.Label>
+                    <Form.Label>{jezik == 1? 'Kada?' : 'When?'}</Form.Label>
                     <Form.Control type="text" name='kada' placeholder={jezik == 1? 'upišite godinu ili period Vašeg života, kao na pr. kasno detinjstvo' : 'precise year or period in your life, such as late childhood'}
                     onChange={handleInput} value={formData?.kada}  />
                     </Form.Group>
@@ -206,7 +369,7 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
             <br/>
             <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>{jezik == 1? 'Da li se secate dijagnoze' : 'Do you remember the diagnosis?'}</Form.Label>
+                    <Form.Label>{jezik == 1? 'Da li se sećate dijagnoze?' : 'Do you remember the diagnosis?'}</Form.Label>
                     <Form.Control type="text" name='dijagnoza' placeholder={jezik == 1? 'upišite najpreciznije što možete' : 'as precise as you can'}  
                     onChange={handleInput} value={formData?.dijagnoza} />
                     </Form.Group>
@@ -242,7 +405,7 @@ Klikom na dugme ZAPOČNITE EKSPERIMENT, potvrđujete da ste pročitali i u potpu
                 <Col xs={3}></Col>
                 <Col xs={3}>
                     <Button style={{marginTop: '20px'}} type='submit' variant='primary' onClick={submitHandler}>
-                    {jezik==1 ? 'Sačuvaj i predji na test' : 'Save and proceed to the test'}
+                    {jezik==1 ? 'Sačuvajte i pređite na test'.toUpperCase() : 'Save and proceed to the test'.toUpperCase()}
                     </Button>
                 </Col>
                 <Col xs={3}>
