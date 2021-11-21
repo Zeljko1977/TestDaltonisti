@@ -20,6 +20,7 @@ const HomePage = ({history}) => {
         dispatch({type: RESET_FORM_DATA})
           
       },[])
+    //a
     const submitHandler = () => {
         dispatch(saveFormData(formData))
         /* const interval1 = setTimeout(() =>{
