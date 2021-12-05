@@ -102,7 +102,7 @@ const ResultsScreen = () => {
                 </Row>
                 <Row>
                     <Col>
-                    <p>Zanimanje: {korisnik.podaci.zanimanje}</p>
+                    <p>Email: {korisnik.podaci.email ? korisnik.podaci.email : '-'}</p>
                     </Col>
                     <Col>
                     <p>Rezultat testa: {korisnik.podaci.test}</p>

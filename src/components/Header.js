@@ -19,21 +19,21 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-            <LinkContainer to="/register">
+            {/* <LinkContainer to="/register">
                 <Nav.Link>
                   <i className="fas fa-user-plus"></i> Register
                 </Nav.Link>
-              </LinkContainer>
-                <NavDropdown title='LogOut' id='username'>
+              </LinkContainer> */}
+                {/* <NavDropdown title='LogOut' id='username'>
                   <NavDropdown.Item>
                     Logout
                   </NavDropdown.Item>
-                </NavDropdown>
-               <LinkContainer to="/results">
+                </NavDropdown> */}
+               {/* <LinkContainer to="/results">
                 <Nav.Link>
                   <i className="fas fa-user"></i> Rezultati
                 </Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               
               {/* <LinkContainer to="/boje">
                 <Nav.Link>

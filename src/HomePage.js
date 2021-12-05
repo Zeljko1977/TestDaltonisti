@@ -204,18 +204,25 @@ Consent form and that you freely consent to participate in this study.</p>
             {start &&  <div>
                 {jezik==1 && <Card>
                     <Card.Body>
-                        <p> U okviru ovog prvog koraka, molim Vas da kliknete na link ispod koji će Vas odvesti do testa opažanja boja.
-                            <br/> Test će se otvoriti u novom tabu i traje okvirno 5 minuta. Uradite test do kraja i kao finalni korak kliknite na link <b>No, thanks. Continue to the test result.</b> (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je izražen poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.</p>
-                            
+                        <p>
+                        U okviru ovog prvog koraka, potrebno je da uradite test opažanja boja koji traje okvirno do 5 minuta. Test koji pripada Enchroma sajtu će se otvoriti u novom tabu (prozoru) nakon što kliknete na dugme <b>URADI TEST: COLOUR VISION TEST LINK </b>koje se nalazi u nastavku.
+Pokrenite test klikom na prvo dugme na stranici <b>"Start the Test"</b>.<br/>
+NAPOMENA: Ne zatvarajte ovaj tekući prozor jer ćete se vratiti na njega kada završite sa testom. Pre početka testa pojačajte svetlinu (brightness) ekrana na maksimalni intezitet. 
+Uradite test do kraja i kao finalni korak kliknite na link <b>"No, thanks. Continue to the test result."</b> (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je izražen poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.
+Ako dobijete rezultat testa "Neodređen/nepotpun rezultat" ponovite test sve dok ne dobijete jednu od ponuđenih 10 kategorija.
+
+                        </p>
                             </Card.Body>
                     </Card>}
                     {jezik!=1 && <Card>
                     <Card.Body>
-                        <p>As part of this first step, please click on the link below to take you to the color perception test. 
-                            The test will open in a new tab and last approximately 5 minutes. 
-                            Take the test to the end and as a final step, click on the link <b>No, thanks. Proceed to the test results.</b> (see picture below) 
-                            Furthermore, you will get test results that will contain two pieces of information - what type of disorder you have (protan, deutan, tritan) and to what extent the disorder is pronounced (mild, moderate, severe). It is also possible to get the category "normal vision perception" as a result. 
-                            Remember the result and return to this window to select the category of the obtained result and proceed to the next test step.
+                        <p>
+                        As part of this first step, you need to do a color perception test that lasts approximately 5 minutes. The test belonging to the Enchroma site will open in a new tab (window) after you click on the button below <b>DO THE TEST: COLOR VISION TEST LINK</b>.
+Run the test by clicking the first button on the page <b>"Start the Test"</b>.<br/>
+NOTE: Do not close this current window as you will return to it when you have completed the test. Before starting the test, increase the brightness of the screen to maximum intensity.
+Take the test to the end and as a final step, click on the link <b>"No, thanks. Proceed to the test results"</b>. (see picture below) Furthermore, you will get test results that will contain two pieces of information - what type of disorder you have (protan, deutan, tritan) and to what extent the disorder is pronounced (mild, moderate, severe). It is also possible to get the category "normal vision perception" as a result. Remember the result and return to this window to select the category of the obtained result and proceed to the next test step. If you get a "Indeterminate / Incomplete Score" test result, repeat the test until you get one of the 10 categories offered.
+
+
                         </p>
                             
                     </Card.Body>
@@ -225,12 +232,17 @@ Consent form and that you freely consent to participate in this study.</p>
                 <Image src={slika} fluid/>
                 <br/>
                 <br/>
+                <br/>
                 <Row>
+                    <Col>
+                    </Col>
                 <Col>
                 {/* <p>{jezik == 1? 'Pre nego što pređete na test kliknite na link za online dijagnostiku koji se nalazi ispod. Nakon što uradite evaluaciju vida vratite se da upišete rezultate i započnete testiranje.': 'Before proceeding to the test, click on the link for online diagnostics below. After doing a vision evaluation, go back to enter the results and start testing.'}</p> */}
-                <Nav.Link style={{ color: 'white', padding: '0.375rem 0.75rem', borderRadius: '0.4em', border: '1px solid #78C2AD', backgroundColor: '#78C2AD', display:'inline-block'}} target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>COLOUR VISION TEST</Nav.Link>
+                <Nav.Link style={{ color: 'white', padding: '0.375rem 0.75rem', borderRadius: '0.4em', border: '1px solid #78C2AD', backgroundColor: '#78C2AD', display:'inline-block'}} target={"_blank"} href='https://enchroma.co.uk/pages/colour-blind-test'>{jezik==1 ? 'URADI TEST: COLOUR VISION TEST LINK' : 'PROCEED TO THE TEST: COLOUR VISION TEST LINK'}</Nav.Link>
                     
                 </Col>
+                <Col>
+                    </Col>
             </Row>
             
             <br/>
@@ -301,7 +313,7 @@ Consent form and that you freely consent to participate in this study.</p>
             <Row>
                 <Col xs={4}></Col>
                 <Col xs={4}>                
-                <Button type='submit' variant='primary' onClick={startQuestionnaireHandler} >
+                <Button type='submit' variant='primary' onClick={startQuestionnaireHandler} disabled={!formData.test} >
                     {jezik==1 ? 'ZAPOČNITE UPITNIK' : 'START THE QUESTIONNAIRE'  }
                     </Button>
                     </Col>
@@ -320,7 +332,7 @@ Consent form and that you freely consent to participate in this study.</p>
            <Row>
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>{jezik == 1? 'Upišite godinu Vašeg rođenja:' : 'Please write the year of your birth:'}</Form.Label>
-                    <Form.Control type="number" name='datumRodjenja' onChange={handleInput} value={formData?.datumRodjenja}  />
+                    <Form.Control min='1950' max='2010' type="number" name='datumRodjenja' onChange={handleInput} value={formData?.datumRodjenja}  />
                     </Form.Group>
             </Row>
             <br/>
@@ -346,8 +358,37 @@ Consent form and that you freely consent to participate in this study.</p>
                     </Form.Group>
             </Row>
             <br/>
-
-            
+            {jezik==1 && <Card>
+                    <Card.Body>
+                    <p>
+            Vaši podaci su nam dragoceni u razumevanju procesa viđenja i pamćenja boja kao i pri razvijanju tehničkih pomagala za ljude sa teškoćama u razlikovanju boja. Bili bismo Vam veoma zahvalni ukoliko biste želeli da učestvujete i u nekom od naših narednih istraživanja na ovu temu. Ukoliko je to slučaj, molimo Vas da unesete svoju imejl adresu preko koje možemo da Vas kontaktiramo. Čak i ako sada ostavite adresu uvek kasnije možete da se predomislite i da odbijete dalje učešće.
+            </p>
+            <p>
+            Poslaćemo Vam ličnu šifru za učešće u narednom istraživanju, te Vas molimo da je sačuvate. Ukoliko imate bilo kakvih pitanja, komentara ili želite da podelite utiske o učešću u istraživanju, budite slobodni da se obratite doc. dr Ivani Jakovljev na imejl adresu:
+            ivana.jakovljev@ff.uns.ac.rs
+            </p>
+                            </Card.Body>
+                    </Card>}
+            {jezik!=1 && <Card>
+                        <Card.Body>
+                        <p>
+            Your contribution will help us to understand how people see and memorise colours. It will also contribute to the development of technical aids for people with diffculties in color discrimination. We would be very grateful if you would consider participating in similar future studies. If you would be willing to do so, please leave us your e-mail adress so that we can contact you. Even if you leave your contact now and you are not available later you can always decline further participation.
+            </p>
+            <p>
+            Now we will send you a personal code for your future participation that you should save and use later.
+            If you have any questions or comments, or you would just like to share your experience about completing this study, please contact Asst. Prof. Ivana Jakovljev ivana.jakovljev@ff.uns.ac.rs.
+            </p>
+                    
+                        </Card.Body>
+                    </Card>}
+            <br/>
+            <Row>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                    <Form.Label>{jezik == 1? 'Email (opciono)' : 'Email (optional)'}</Form.Label>
+                    <Form.Control type="email" name='email' onChange={handleInput} value={formData?.email}/>
+                    </Form.Group>
+            </Row>
+            <br/>
 
             <Row>
             <Form.Label>{jezik==1 ? 'Da li Ste ikada bili dijagnostikovani kao osoba sa teškoćama u prepoznavanju boja?' : 'Were you ever diagnosed with colour blindness by medical practitioners?'}</Form.Label>
@@ -405,7 +446,7 @@ Consent form and that you freely consent to participate in this study.</p>
             {start && startQuestionnaire && <Row>
                 <Col xs={3}></Col>
                 <Col xs={3}>
-                    <Button style={{marginTop: '20px'}} type='submit' variant='primary' onClick={submitHandler}>
+                    <Button style={{marginTop: '20px'}} type='submit' variant='primary' onClick={submitHandler} disabled={!formData.pol || (!formData.datumRodjenja || (formData.datumRodjenja < 1950 || formData.datumRodjenja > 2010))}>
                     {jezik==1 ? 'Sačuvajte i pređite na test'.toUpperCase() : 'Save and proceed to the test'.toUpperCase()}
                     </Button>
                 </Col>

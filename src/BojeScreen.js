@@ -70,7 +70,7 @@ const BojeScreen = ({history}) => {
            blokada = false
 
             
-        }, 2000);
+        }, 3500);
          //   console.log('DODAJE LISTENER')
             window.addEventListener("keydown", handleDown)
         
