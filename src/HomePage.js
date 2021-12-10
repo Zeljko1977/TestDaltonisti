@@ -208,7 +208,7 @@ Consent form and that you freely consent to participate in this study.</p>
                         U okviru ovog prvog koraka, potrebno je da uradite test opažanja boja koji traje okvirno do 5 minuta. Test koji pripada Enchroma sajtu će se otvoriti u novom tabu (prozoru) nakon što kliknete na dugme <b>URADI TEST: COLOUR VISION TEST LINK </b>koje se nalazi u nastavku.
 Pokrenite test klikom na prvo dugme na stranici <b>"Start the Test"</b>.<br/>
 NAPOMENA: Ne zatvarajte ovaj tekući prozor jer ćete se vratiti na njega kada završite sa testom. Pre početka testa pojačajte svetlinu (brightness) ekrana na maksimalni intezitet. 
-Uradite test do kraja i kao finalni korak kliknite na link <b>"No, thanks. Continue to the test result."</b> (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je izražen poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje vida“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.
+Uradite test do kraja i kao finalni korak kliknite na link <b>"No, thanks. Continue to the test result."</b> (videti sliku ispod) i dobićete rezultate testa u kojima će biti sadržane dve informacije – koju vrstu poremećaja imate (protan, deutan, tritan) i u kom stepenu je izražen poremećaj (mild, moderate, severe). Moguće je i da kao rezultat dobijete kategoriju „normalno opažanje boja“. Zapamtite rezultat i vratite se u ovaj prozor da odaberete kategoriju dobijenog rezultata i pređete na sledeći korak ispitivanja.
 Ako dobijete rezultat testa "Neodređen/nepotpun rezultat" ponovite test sve dok ne dobijete jednu od ponuđenih 10 kategorija.
 
                         </p>
@@ -220,7 +220,7 @@ Ako dobijete rezultat testa "Neodređen/nepotpun rezultat" ponovite test sve dok
                         As part of this first step, you need to do a color perception test that lasts approximately 5 minutes. The test belonging to the Enchroma site will open in a new tab (window) after you click on the button below <b>DO THE TEST: COLOR VISION TEST LINK</b>.
 Run the test by clicking the first button on the page <b>"Start the Test"</b>.<br/>
 NOTE: Do not close this current window as you will return to it when you have completed the test. Before starting the test, increase the brightness of the screen to maximum intensity.
-Take the test to the end and as a final step, click on the link <b>"No, thanks. Proceed to the test results"</b>. (see picture below) Furthermore, you will get test results that will contain two pieces of information - what type of disorder you have (protan, deutan, tritan) and to what extent the disorder is pronounced (mild, moderate, severe). It is also possible to get the category "normal vision perception" as a result. Remember the result and return to this window to select the category of the obtained result and proceed to the next test step. If you get a "Indeterminate / Incomplete Score" test result, repeat the test until you get one of the 10 categories offered.
+Take the test to the end and as a final step, click on the link <b>"No, thanks. Proceed to the test results"</b>. (see picture below) Furthermore, you will get test results that will contain two pieces of information - what type of disorder you have (protan, deutan, tritan) and to what extent the disorder is pronounced (mild, moderate, severe). It is also possible to get the category "normal color perception" as a result. Remember the result and return to this window to select the category of the obtained result and proceed to the next test step. If you get a "Indeterminate / Incomplete Score" test result, repeat the test until you get one of the 10 categories offered.
 
 
                         </p>
@@ -361,7 +361,7 @@ Take the test to the end and as a final step, click on the link <b>"No, thanks. 
             {jezik==1 && <Card>
                     <Card.Body>
                     <p>
-            Vaši podaci su nam dragoceni u razumevanju procesa viđenja i pamćenja boja kao i pri razvijanju tehničkih pomagala za ljude sa teškoćama u razlikovanju boja. Bili bismo Vam veoma zahvalni ukoliko biste želeli da učestvujete i u nekom od naših narednih istraživanja na ovu temu. Ukoliko je to slučaj, molimo Vas da unesete svoju imejl adresu preko koje možemo da Vas kontaktiramo. Čak i ako sada ostavite adresu uvek kasnije možete da se predomislite i da odbijete dalje učešće.
+            Vaši podaci su nam dragoceni u razumevanju procesa viđenja i pamćenja boja kao i pri razvijanju tehničkih pomagala za ljude sa teškoćama u razlikovanju boja. Ukoliko imate poteškoća u razlikovanju boja, bili bismo Vam veoma zahvalni ukoliko biste želeli da učestvujete i u nekom od naših narednih istraživanja na ovu temu. Ukoliko je to slučaj, molimo Vas da unesete svoju imejl adresu preko koje možemo da Vas kontaktiramo. Čak i ako sada ostavite adresu uvek kasnije možete da se predomislite i da odbijete dalje učešće.
             </p>
             <p>
             Poslaćemo Vam ličnu šifru za učešće u narednom istraživanju, te Vas molimo da je sačuvate. Ukoliko imate bilo kakvih pitanja, komentara ili želite da podelite utiske o učešću u istraživanju, budite slobodni da se obratite doc. dr Ivani Jakovljev na imejl adresu:
@@ -372,7 +372,7 @@ Take the test to the end and as a final step, click on the link <b>"No, thanks. 
             {jezik!=1 && <Card>
                         <Card.Body>
                         <p>
-            Your contribution will help us to understand how people see and memorise colours. It will also contribute to the development of technical aids for people with diffculties in color discrimination. We would be very grateful if you would consider participating in similar future studies. If you would be willing to do so, please leave us your e-mail adress so that we can contact you. Even if you leave your contact now and you are not available later you can always decline further participation.
+            Your contribution will help us to understand how people see and memorise colours. It will also contribute to the development of technical aids for people with diffculties in color discrimination. If you have difficulty distinguishing colors, we would be very grateful if you would consider participating in similar future studies. If you would be willing to do so, please leave us your e-mail adress so that we can contact you. Even if you leave your contact now and you are not available later you can always decline further participation.
             </p>
             <p>
             Now we will send you a personal code for your future participation that you should save and use later.
