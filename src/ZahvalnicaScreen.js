@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Row, Col, Nav, Card } from 'react-bootstrap'
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc } from 'firebase/firestore/lite';
 import { useDispatch, useSelector } from 'react-redux';
+import app from './util/firebase'
+
+const db = getFirestore(app);
 
 const ZahvalnicaScreen = ({history}) => {
 
-     const form = useSelector(state => state.form)
-    const {userData} = form; 
+      
+    const test = useSelector(state => state.test)
+    const {testovi} = test;
+    const form = useSelector(state => state.form)
+    const {userData} = form;
+
+    useEffect(()=>{
+        //  getResults(db)
+        if(testovi.length !==0){
+            console.log('snima')
+          saveResults(db)
+        }
+        
+          
+      },[testovi])
+
+      async function saveResults(db) {
+        const randomString = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7)
+        console.log(randomString)
+        const savedPackage = {
+            datum: new Date().toLocaleDateString(),
+            res: testovi,
+            podaci: userData,
+            name: randomString
+             
+        }
+        console.log(randomString)
+        console.log(savedPackage)
+        await setDoc(doc(db, "rezultati", randomString), savedPackage);
+    }
 
     const submitHandler = () => {
        

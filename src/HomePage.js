@@ -33,8 +33,8 @@ const HomePage = ({history}) => {
         setFormData({...formData, [e.target.name] : e.target.value})
       }
     const handleRadio = (e) => {
-        console.log(e.target.name)
-        console.log(e.target.value)
+ //       console.log(e.target.name)
+ //       console.log(e.target.value)
         setFormData({...formData, [e.target.name] : e.currentTarget.value})
     }
 

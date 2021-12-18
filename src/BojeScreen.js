@@ -66,7 +66,7 @@ const BojeScreen = ({history}) => {
         const interval2 = setTimeout(() => {
             setShow(2)
             t=Date.now()
-           console.log('drugi tajmer')
+ //          console.log('drugi tajmer')
            blokada = false
 
             
@@ -86,20 +86,19 @@ const BojeScreen = ({history}) => {
 
      const handleDown = event => {
          
-         console.log('Evo ga show', show)
+//         console.log('Evo ga show', show)
         if((event.key==='a' || event.key==='l') && !blokada){
         setShow(4)
         
         setTimeout(()=>{
             blokada = true
-            console.log(t)
-            console.log(Date.now())
-            console.log((Date.now()-t)/1000)
+ //           console.log(t)
+ //           console.log(Date.now())
+  //          console.log((Date.now()-t)/1000)
             
                 const color = event.key === 'a'? 1 : 2
                 if(color===bojanka[counterColor].meta){
-                //   console.log("Bravo majstore, POGODAK")
-                //   console.log('counter boje', counterColor)
+                
                    setRezultati([...rezultati, 
                     {serija: bojanka[counterColor].serija,
                      pogodjen: true,
@@ -111,8 +110,7 @@ const BojeScreen = ({history}) => {
                      reactionTime:  Date.now()-t}
                     ])
                } else {
-                //   console.log("brate ti si daltonista")
-                //   console.log('counter boje', counterColor)
+               
                    setRezultati([...rezultati,
                      {serija: bojanka[counterColor].serija,
                         pogodjen: false,
@@ -125,9 +123,7 @@ const BojeScreen = ({history}) => {
                     ])
                }
                if(counterColor===bojanka.length-1){
-               //    console.log('kraj testa')
-               //    console.log(rezultati)
-                //   console.log('imate ukupno', rezultati.reduce((acc,cur)=>acc+(cur.pogodjen === true ? 1:0),0), ' pogodaka')
+           
                    setShow(3)
                    setShow(3)
                } else{
@@ -153,19 +149,7 @@ const BojeScreen = ({history}) => {
             name: name
         }
         dispatch(saveTestData(rezultati))
-        //console.log(fireDb)
-      //  await setDoc(doc(db, "rezultati", name), savedPackage);
-        //const citiesCol = collection(db, 'rezultati');
-        //const citySnapshot = await addDoc('savedPackage');
-        //const cityList = citySnapshot.docs.map(doc => doc.data());
-        //return cityList;
-      //  const rezultatiRef = firebase.automaticDataCollectionEnabled.valueOf()
-      //  rezultatiRef.push(savedPackage)
-      //  console.log('Ovo putuje na backend: ', savedPackage)
-      /* const interval1 = setTimeout(() =>{
-        history.push({pathname: `/bojethree`})
-        console.log('idemo na drugi test')
-    } , 5000); */
+       
     history.push({pathname: `/uputstvo2`}) 
         
     }
