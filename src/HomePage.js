@@ -109,7 +109,7 @@ Saglasnost za učestvovanje u istraživanju.</p>
                     </Card>}
                     {jezik!=1 && <Card>
                 <Card.Body><p><b>EXPERIMENT INFO</b><br/><br/>
-    About 5-10% of people suffers from some form of difficulties in color discrimination. We,
+    About 5-10% of people suffer from some form of difficulties in color discrimination. We,
 researchers from the Faculty of Philosophy and the Faculty of Technical sciences (University
 of Novi Sad, Serbia) are conducting a study about colour perception and memory. We hope
 that these results will help us to further develop technologies for image optimisation for
@@ -120,7 +120,7 @@ like yourself.<br/>
 Therefore, if you are so kind to help us, your participation will be voluntary, confidential and
 completely anonymous. Your data will be used only for scientific purposes, and no one will
 be able to establish a link between you personally and your responses.<br/>
-UEven if, at the end of the experiment, you decide to contact us to comment on this study, and
+Even if, at the end of the experiment, you decide to contact us to comment on this study, and
 in the process, you reveal your identity, we will still keep your identity confidential, and we
 will never put your name with the reports on results. The results will always contain only the
 group values and never your individual data.<br/>
